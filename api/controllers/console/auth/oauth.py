@@ -45,10 +45,9 @@ class OAuthLogin(Resource):
         OAUTH_PROVIDERS = get_oauth_providers()
         with current_app.app_context():
             oauth_provider = OAUTH_PROVIDERS.get(provider)
-            print(vars(oauth_provider))
         if not oauth_provider:
             return {"error": "Invalid provider"}, 400
-
+        print(vars(oauth_provider))
         auth_url = oauth_provider.get_authorization_url()
         return redirect(auth_url)
 
